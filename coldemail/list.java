@@ -51,7 +51,10 @@ public class list extends AppCompatActivity {
     List<String> name_array;
     List<String> email_array;
     List<String> email_temp;
+    List<String> filtered;
+    List<String> emailtemp;
     ProgressBar progressBar;
+    EditText searchField;
 
     private SharedPreferences sharedPreferences;
 
@@ -72,12 +75,13 @@ public class list extends AppCompatActivity {
         name = findViewById(R.id.name);
         recyclerView = findViewById(R.id.list_data);
         progressBar = findViewById(R.id.progressBar);
-        EditText searchField = findViewById(R.id.searchField);
+        searchField = findViewById(R.id.searchField);
         searchField.clearFocus();
         name_array = new ArrayList<>();
         email_array = new ArrayList<>();
         email_temp = new ArrayList<>();
-        email_temp.addAll(email_array);
+        filtered = new ArrayList<>();
+        emailtemp = new ArrayList<>();
         sharedPreferences = getSharedPreferences(PREFER_NAME, Context.MODE_PRIVATE);
         // User Session Manager
         session = new UserSession(getApplicationContext());
@@ -90,16 +94,22 @@ public class list extends AppCompatActivity {
         }
         name.setText(uemail);
 
-
-
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //String pos = email_temp.get(position);
+                String search_Text = searchField.getText().toString();
+                if (search_Text.isEmpty()){
                 Toast.makeText(list.this, email_array.get(position), Toast.LENGTH_SHORT).show();
                 String[] pos = new String[1];
                 pos[0] = email_array.get(position);
-                composeEmail(pos);
+                composeEmail(pos);}
+                else {
+                    Toast.makeText(list.this, emailtemp.get(position), Toast.LENGTH_SHORT).show();
+                    String[] pos = new String[1];
+                    pos[0] = emailtemp.get(position);
+                    composeEmail(pos);
+                }
+
 
             }
 
@@ -250,19 +260,20 @@ public class list extends AppCompatActivity {
             }
     }
     private void filter_List(String text){
-        List<String> filtered = new ArrayList<>();
-        List<String> emailtemp = new ArrayList<>();
-        for(String c: email_array){
-            if(!c.isEmpty()){
-                emailtemp.add(c);
-            }
-        }
+//        List<String> filtered = new ArrayList<>();
+//        List<String> emailtemp = new ArrayList<>();
+          String search_Text = searchField.getText().toString();
+
         for (String name : name_array ){
             if (name.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))){
                 filtered.add(name);
-
+                int pos = name_array.indexOf(name);
+                String em = email_array.get(pos);
+                emailtemp.add(em);
             }
+
         }
+        emailtemp.addAll(email_array);
         if (filtered.isEmpty()){
             Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
         }
