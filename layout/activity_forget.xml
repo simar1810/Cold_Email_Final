@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".forget"
+    android:background="@drawable/back">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:text="Forget Password"
+        android:textColor="@color/purple_700"
+        android:textSize="30sp"
+        android:id="@+id/forget_text"/>
+
+    <EditText
+        android:id="@+id/username_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="UserName"
+        android:textColorHint="@color/purple_700"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:layout_below="@+id/forget_text"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:background="#200000FF"
+        tools:ignore="UnknownId"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="273dp"
+        android:textColor="@color/purple_700"
+        />
+    <EditText
+        android:id="@+id/email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#200000FF"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:hint="Email"
+        android:padding="20dp"
+        android:textColor="@color/purple_700"
+        android:textColorHint="@color/purple_700"
+        tools:ignore="UnknownId"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="273dp" />
+
+    <Button
+        android:id="@+id/forget_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Change Password"
+        />
+
+    <EditText
+        android:id="@+id/new_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forget_btn"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#200000FF"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:hint="Enter New Password"
+        android:padding="20dp"
+        android:textColor="@color/purple_700"
+        android:textColorHint="@color/purple_700"
+        tools:ignore="UnknownId"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="273dp"
+        android:visibility="invisible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Password"
+        android:id="@+id/set_pass"
+        android:layout_margin="20dp"
+        android:layout_below="@id/new_pass"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        />
+
+
+
+
+
+
+</RelativeLayout>
+
+
